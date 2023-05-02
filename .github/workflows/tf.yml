@@ -7,7 +7,24 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Clone role zabbix server
+      uses: actions/checkout@v2
+      with:
+        repository: 'caiosampaio894/vagrant-ansible-docker'
+        path: ./ansible/roles/vagrant-ansible-docker
+  
+
+    - name: Build AMI
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      run: |
+        sudo apt-get install -y packer ansible
+        sudo packer build  -var "aws_access_key=${aws_access_key}" -var "aws_secret_key=${aws_secret_key}" ./packer/build.json
