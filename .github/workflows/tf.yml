@@ -15,13 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Clone role ansible
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
       with:
         repository: 'caiosampaio894/vagrant-ansible-docker'
         path: ./ansible/roles/vagrant-ansible-docker
-        node-version: '18.x'
-        registry-url: 'https://registry.npmjs.org'
 
     - name: Build AMI
       env:
