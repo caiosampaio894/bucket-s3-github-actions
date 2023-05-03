@@ -1,12 +1,12 @@
 {
 	"variables": {
-	"aws_access_key": "{env, `aws_access_key`}",
-	"aws_secret_key": "{env, `aws_secret_key`}"
+	"AWS_ACCESS_KEY_ID": "{env, `AWS_ACCESS_KEY_ID`}",
+	"AWS_SECRET_ACCESS_KEY": "{env, `AWS_SECRET_ACCESS_KEY`}"
 	},
 	"builders": [{
 		"type": "amazon-ebs",
-		"access_key": "{{user `aws_access_key`}}",
-		"secret_key": "{{user `aws_secret_key`}}",
+		"access_key": "{{user `AWS_ACCESS_KEY_ID`}}",
+		"secret_key": "{{user `AWS_SECRET_ACCESS_KEY`}}",
 		"region": "us-east-1",
 		"source_ami": "ami-0b0af3577fe5e3532",
 		"instance_type": "t3.medium",
