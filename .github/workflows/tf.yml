@@ -14,11 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Clone role ansible
-      uses: actions/checkout@v3
-      with:
-        repository: 'caiosampaio894/vagrant-ansible-docker'
-        path: ./ansible/roles/vagrant-ansible-docker
 
     - name: Build AMI
       env:
