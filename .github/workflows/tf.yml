@@ -28,6 +28,7 @@ jobs:
         export AWS_ACCESS_KEY_ID=${aws-access-key-id}
         export AWS_SECRET_ACCESS_KEY=${aws-secret-access-key}
         export AWS_REGION="us-east-1"
+        printenv|grep AWS
         terraform init
         terraform apply -auto-approve
         aws s3 cp index.html s3://buckt-s3-terraform-actions/index.html
